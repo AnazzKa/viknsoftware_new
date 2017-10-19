@@ -16,12 +16,17 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
-                    <a href="user.html">
-                        <i class="ti-user"></i>
-                        <p>User Profile</p>
-                    </a>
-                </li>
+               <li class="sub-menu" >
+                <a href="javascript:;" >
+                    <i class="fa fa-plus"></i>
+                    <span>User</span></a>
+                <ul class="sub">
+                    <li><a  href="<?php echo base_url; ?>useradd"><i class="fa fa-pencil"></i>Add</a></li>
+                    <li><a  href="<?php echo base_url; ?>userlist"><i class="fa fa-pencil"></i>List</a></li>
+                      </ul>
+                    
+            </li>
+
                 <li>
                     <a href="table.html">
                         <i class="ti-view-list-alt"></i>

@@ -13,11 +13,8 @@ class Login extends CI_Controller {
     public function index()
     {
         $data['title']="Vikn Login Form";
-//        $this->load->view('static/head');
-//        $this->load->view('static/menu');
-        $this->load->view('login/login',$data);
-//        $this->load->view('static/footer');
-//        $this->load->view('static/script');
+		$this->load->view('login/login',$data);
+
 
     }
 public function login_action()
