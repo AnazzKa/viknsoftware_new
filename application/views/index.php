@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Vikn Software</title>
-	<link rel="stylesheet" href="<?php echo base_url ?>fr/css/slider.css">
-	<link rel="stylesheet" href="<?php echo base_url ?>fr/css/main.css">
-	<link rel="stylesheet" href="<?php echo base_url ?>fr/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo base_url ?>assets/css/slider.css">
+	<link rel="stylesheet" href="<?php echo base_url ?>assets/css/main.css">
+	<link rel="stylesheet" href="<?php echo base_url ?>assets/css/bootstrap.min.css">
 </head>
 <body>
 <div class="head1" style="width: 100%;height: 70px;background-color:rgba(0, 0, 0, 0.61);position: fixed;z-index: 999;">
@@ -35,9 +35,9 @@
 			
 		</div>
 	</div>
-  <script src="<?php echo base_url ?>fr/js/bootstrap.min.js"></script>
+  <script src="<?php echo base_url ?>assets/js/bootstrap.min.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url ?>fr/js/slider.min.js"></script>
+	<script src="<?php echo base_url ?>assets/js/slider.min.js"></script>
 	<script>
 	$(function(){
 		$('#slider').rbtSlider({
