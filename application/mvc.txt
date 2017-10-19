@@ -1,0 +1,19 @@
+function __construct() {
+	parent::__construct();
+	$this->load->model('user_model');
+	$this->load->library('session');
+	$this->load->library('pagination');
+	}
+
+/////////////// MODEL SAMPLE CODE ///////////////////
+
+if (!defined('BASEPATH')) exit('No direct script access allowed');
+class User_model extends CI_Model
+{ 
+var $db;
+function __construct() {
+parent::__construct();
+$this->db = $this->load->database('default', TRUE);//db connection
+}
+	
+	
