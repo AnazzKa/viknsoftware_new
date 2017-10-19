@@ -20,17 +20,28 @@
         </div>
             <div class="wrapper wrapper-content">
         <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-3" data-toggle="collapse" data-target="#collapseme">
+
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
                                 <span class="label label-success pull-right">Monthly</span>
-                                <h5>Income</h5>
+                                <h5>Accounts</h5>
                             </div>
-                            <div class="ibox-content">
-                                <h1 class="no-margins">40 886,200</h1>
-                                <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
-                                <small>Total income</small>
-                            </div>
+                            <div id="collapseme" class="collapse out">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                Cash accounts<i class="fa fa-chevron-right" style="float: right;"></i>
+              </div>
+              <div class="panel-body">
+                Agent <i class="fa fa-chevron-right" style="float: right;"></i>
+              </div>
+              <div class="panel-body">
+               Customers<i class="fa fa-chevron-right" style="float: right;"></i>
+              </div>
+            </div>
+          </div>
+                            
+                          
                         </div>
                     </div>
                     <div class="col-lg-3">
