@@ -10,8 +10,8 @@
                         <i class="fa fa-sign-out"></i> Dashboard
                 </li>
                 <li>
-                    <a href="login.html">
-                        <i class="fa fa-sign-out"></i> Log out
+                    <a href="">
+                        <i class="fa fa-user-circle-o"></i>  <?php echo $this->session->userdata("NAME") ?>
                     </a>
                 </li>
             </ul>

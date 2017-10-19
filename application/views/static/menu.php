@@ -22,6 +22,7 @@
                         IN+
                     </div>
                 </li>
+                
                 <li class="active">
                     <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -32,23 +33,7 @@
                         <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
                     </ul>
                 </li>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-
-                
-                
-                
-                
-                
-                
+                 
             </ul>
 
         </div>
