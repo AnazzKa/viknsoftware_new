@@ -31,7 +31,7 @@ public function login_action()
 			header('Location:'.base_url.'Dashboard');
 		}else{
 			$this->session->set_flashdata("msg","<p class='alert alert-danger'>Sorry Invalid Login!<p>");
-			header("Location:".base_url."admin");
+			header("Location:".base_url."login");
 		}
 
 	}

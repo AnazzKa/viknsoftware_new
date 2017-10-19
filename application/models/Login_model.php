@@ -11,13 +11,12 @@ class Login_model extends CI_Model {
 		}	
 		public function login_action($user,$pass)
 		{
-			$log=$this->db->query("SELECT * FROM vikn_users WHERE email='$user' AND password='$pass' ");
+			$log=$this->db->query("SELECT * FROM vikn_users WHERE username='$user' AND password='$pass' ");
 			$sql=$log->num_rows();
 			if($sql>0)
 			{
 				$data=$log->row();
-				$sq=array('ID'=>$data->userid,'NAME'=>$data->fname,'TYPE'=>$data->type_id);
-		
+				$sq=array('ID'=>$data->userid,'NAME'=>$data->username);		
 				$this->session->set_userdata($sq);
 				return true;
 			}
