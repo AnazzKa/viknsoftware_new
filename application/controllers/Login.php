@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller {
     function __construct() {
         parent::__construct();
-        // $this->load->model('User_model');
+         $this->load->model('Login_model');
         $this->load->library('session');
         $this->load->library('pagination');
 
@@ -22,7 +22,7 @@ class Login extends CI_Controller {
     }
 public function login_action()
 	{
-		$user=$_POST['userername'];
+		$user=$_POST['username'];
 		$pass=$_POST['password'];
 
 		$log=$this->Login_model->login_action($user,$pass);

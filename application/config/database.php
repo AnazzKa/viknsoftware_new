@@ -80,7 +80,7 @@ $db['default'] = array(
 	'password' => '',
 	'database' => 'viknsoftware_new',
 	'dbdriver' => 'mysqli',
-	'dbprefix' => 'vikn_',
+	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,

@@ -11,7 +11,7 @@ class Login_model extends CI_Model {
 		}	
 		public function login_action($user,$pass)
 		{
-			$log=$this->db->query("SELECT * FROM vk_users WHERE email='$user' AND password='$pass' ");
+			$log=$this->db->query("SELECT * FROM vikn_users WHERE email='$user' AND password='$pass' ");
 			$sql=$log->num_rows();
 			if($sql>0)
 			{
