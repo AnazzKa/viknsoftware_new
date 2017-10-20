@@ -12,10 +12,10 @@ class Home extends CI_Controller {
 
     public function index()
     {
-        $data['title']="Vikn Login Form";
-        $this->load->view('static/head');
+        $data['title']="Vikn Software | Dashboard";
+        $this->load->view('static/head',$data);
        $this->load->view('static/menu');
-        $this->load->view('home/index',$data);
+        $this->load->view('home/index');
         $this->load->view('static/footer');
        $this->load->view('static/script');
 
