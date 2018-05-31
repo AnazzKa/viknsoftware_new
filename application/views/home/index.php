@@ -1,88 +1,136 @@
-
-<div id="page-wrapper" class="gray-bg">
-    <div class="row border-bottom">
-        <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            </div>
-            <ul class="nav navbar-top-links navbar-right"> 
-                <li>                   
-                    <i class="fa fa-sign-out"></i> Dashboard
-                </li>
-                <li>
-                    <a href="">
-                        <i class="fa fa-user-circle-o"></i>  <?php echo $this->session->userdata("NAME") ?>
-                    </a>
-                </li>
-            </ul>
-
-        </nav>
-    </div>
+<?php $User_type = $this->session->userdata("TYPE"); ?>
     <div class="wrapper wrapper-content">
         <div class="row">
-            <div class="col-lg-3" data-toggle="collapse" data-target="#collapseme">
 
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <span class="label label-success pull-right">Monthly</span>
-                        <h5>Accounts</h5>
+<div class="col-md-12">
+    <p><B>Dashboard</B></p>
+</div>
+            <div class="col-lg-3">
+                <a  href="<?php echo base_url; ?>cash_in_hand">
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block m-t">Cash In Hand </button>
                     </div>
-                    <div id="collapseme" class="collapse out">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                Cash accounts<i class="fa fa-chevron-right" style="float: right;"></i>
-                            </div>
-                            <div class="panel-body">
-                                Agent <i class="fa fa-chevron-right" style="float: right;"></i>
-                            </div>
-                            <div class="panel-body">
-                                Customers<i class="fa fa-chevron-right" style="float: right;"></i>
-                            </div>
+                </a>
+            </div>
+
+
+            <div class="col-lg-3">
+                <a  href="<?php echo base_url; ?>customer">
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block m-t">Customer </button>
+                    </div>
+                     </a>
+                         </div>
+
+            <?php
+            if($User_type==2){
+                ?>
+                <div class="col-lg-3">
+                    <a  href="<?php echo base_url ?>suppliers">
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block m-t">Suppliers </button>
                         </div>
-                    </div>
+
+                    </a>
+                </div>
+                <div class="col-lg-3">
+                    <a  href="<?php echo base_url ?>supplier_cards">
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block m-t">wallet </button>
+                        </div>
+
+                    </a>
+                </div>
+            <?php
+            }
+            ?>
+
+    <div class="col-lg-3">
+        <a  href="<?php echo base_url ?>supplier_cards">
+            <div class="form-group">
+                <button class="btn btn-primary btn-block m-t">Items </button>
+            </div>
+
+            </a>
+            </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <button class="btn btn-primary btn-block m-t">Offers </button>
+        </div>
+
+            </div>
 
 
+    <div class="col-lg-3">
+    <div id="index" class="collapse out">
+        <div class="panel panel-default">
+            <a href="<?php echo base_url ?>create_account">
+                <div class="panel-body">
+                    Create Account<i class="fa fa-chevron-right" style="float: right;"></i>
                 </div>
-            </div>
-            <div class="col-lg-3">
+            </a>
+            <?php if ($User_type == 1 || $User_type ==2) { ?>
+            <a href="<?php echo base_url ?>add_cards_stock">
+                <div class="panel-body">
+                    Create Cards<i class="fa fa-chevron-right" style="float: right;"></i>
+                </div>
+            </a>
+            <?php } ?>
+            <?php if ($User_type == 2) { ?>
+            <a href="<?php echo base_url ?>">
+                <div class="panel-body">
+                    Download Cards<i class="fa fa-chevron-right" style="float: right;"></i>
+                </div>
+            </a>
+            <?php } ?>
+            <?php if ($User_type == 2) { ?>
+            <a href="<?php echo base_url ?>purchase_cards_list">
+                <div class="panel-body">
+                    Items<i class="fa fa-chevron-right" style="float: right;"></i>
+                </div>
+            </a>
+            <?php } ?>
+            <a href="<?php echo base_url ?>receipts_add">
+                <div class="panel-body">
+                    Receipts<i class="fa fa-chevron-right" style="float: right;"></i>
+                </div>
+            </a>
+            <a href="<?php echo base_url ?>payments_add">
+                <div class="panel-body">
+                    Payment<i class="fa fa-chevron-right" style="float: right;"></i>
+                </div>
+            </a>
+            <a href="<?php echo base_url ?>">
+                <div class="panel-body">
+                    ADD Income<i class="fa fa-chevron-right" style="float: right;"></i>
+                </div>
+            </a>
+            <a href="<?php echo base_url ?>">
+                <div class="panel-body">
+                    ADD Expenses<i class="fa fa-chevron-right" style="float: right;"></i>
+                </div>
+            </a>
+            <a href="<?php echo base_url ?>">
+                <div class="panel-body">
+                    ADD Advertisement<i class="fa fa-chevron-right" style="float: right;"></i>
+                </div>
+            </a>
+
+        </div>
+    </div>
+                <a data-toggle="collapse" data-target="#index" href="#index">
                 <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <span class="label label-info pull-right">Annual</span>
-                        <h5>Orders</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <h1 class="no-margins">275,800</h1>
-                        <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
-                        <small>New orders</small>
-                    </div>
+                      <button type="button" class="btn btn-info btn-circle btn-xl pull-right"><i class="glyphicon glyphicon-plus"></i></button>
                 </div>
+                    </a>
             </div>
-            <div class="col-lg-3">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <span class="label label-primary pull-right">Today</span>
-                        <h5>visits</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <h1 class="no-margins">106,120</h1>
-                        <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
-                        <small>New visits</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <span class="label label-danger pull-right">Low value</span>
-                        <h5>User activity</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <h1 class="no-margins">80,600</h1>
-                        <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
-                        <small>In first month</small>
-                    </div>
-                </div>
-            </div>
+
+
+
+
+
+
+
         </div>
 
 

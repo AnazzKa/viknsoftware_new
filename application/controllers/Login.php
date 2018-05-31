@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+ob_start();
 class Login extends CI_Controller {
     function __construct() {
         parent::__construct();
@@ -38,10 +38,11 @@ public function login_action()
 
 	public function logout()
 	{
-		$sql=array("ID"=>"","NAME"=>"");
+
+		$sql=array("ID"=>"","NAME"=>"",'TYPE'=>"",'USER_NAME'=>"");
 		$this->session->set_userdata($sql);
 		$this->session->set_flashdata("msg","<p class='alert alert-success'>You are logged out successfully!</p>");
-		header("Location:".base_url."admin");
+		header("Location:".base_url."login");
 
 	}
 

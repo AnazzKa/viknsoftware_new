@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -15,29 +15,28 @@
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4">
-		<a href="<?php echo base_url ?>login"><div class="login">Login</div></a>
+		<a href="<?php $base_url ?>login"><div class="login">Login</div></a>
 		</div>
 			
 	</div>
 </div>
 	<div class="slider" id="slider">
 		<div class="slItems">
-			<div class="slItem" style="background-image: url('<?php echo base_url ?>assets/images/01.jpg');">
-				<!-- <div class="slText">
-					jQuery Slider.js Backgounrd Carousel Example
-				</div> -->
+			<div class="slItem" style="background-image: url('<?php echo base_url ?>assets/images/banertwo.jpg');">
+
+			</div>
+            <div class="slItem" style="background-image: url('<?php echo base_url ?>assets/images/01.jpg');">
+
 			</div>
 			<div class="slItem" style="background-image: url('<?php echo base_url ?>assets/images/02.jpg');">
-				<!-- <div class="slText">
-					Praesent consequat sapien ut dui hendrerit imperdiet. Donec tincidunt risus et semper accumsan. 
-				</div> -->
+
 			</div>
 			
 		</div>
 	</div>
-  <script src="<?php echo base_url ?>assets/js/bootstrap.min.js"></script>
+  <script src="<?php $base_url ?>assets/js/bootstrap.min.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url ?>assets/js/slider.min.js"></script>
+	<script src="<?php $base_url ?>assets/js/slider.min.js"></script>
 	<script>
 	$(function(){
 		$('#slider').rbtSlider({

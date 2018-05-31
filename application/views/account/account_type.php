@@ -1,23 +1,4 @@
-<div id="page-wrapper" class="gray-bg">
-    <div class="row border-bottom">
-        <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            </div>
-            <ul class="nav navbar-top-links navbar-right"> 
 
-                <li>                   
-                    <i class="fa fa-sign-out"></i> Dashboard
-                </li>
-                <li>
-                    <a href="">
-                        <i class="fa fa-user-circle-o"></i>  <?php echo $this->session->userdata("NAME") ?>
-                    </a>
-                </li>
-            </ul>
-
-        </nav>
-    </div>
     <div class="row wrapper border-bottom white-bg page-heading">       
         <strong><?php echo $this->session->userdata("msg") ?></strong>                 
     </div>
@@ -98,6 +79,31 @@
 
 
             </div>
+            <div class="col-lg-3">
+            <div id="index" class="collapse out">
+                <div class="panel panel-default">
+                    <a href="<?php echo base_url ?>create_account">
+                        <div class="panel-body">
+                            Create New Account<i class="fa fa-chevron-right" style="float: right;"></i>
+                        </div>
+                    </a>
+                    <a href="<?php echo base_url ?>create_account">
+                        <div class="panel-body">
+                            View Accounts<i class="fa fa-chevron-right" style="float: right;"></i>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+                <div class="ibox float-e-margins">
+                    <button type="button" onclick="history.go(-1);" class="btn btn-default btn-circle btn-xl pull-left"><i class="fa fa-arrow-left"></i></button>
+                    <a data-toggle="collapse" data-target="#index" href="#index">
+                    <button type="button" class="btn btn-info btn-circle btn-xl pull-right"><i class="glyphicon glyphicon-plus"></i></button>
+                </a>
+                </div>
+            </div>
+
         </div>
 
 

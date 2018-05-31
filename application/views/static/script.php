@@ -47,5 +47,8 @@
 <script src="<?php echo base_url ?>assets/template/js/plugins/dataTables/datatables.min.js"></script>
 <script src="<?php echo base_url ?>assets/template/js/plugins/toastr/toastr.min.js"></script>
 
+<script src="<?php echo base_url ?>assets/template/js/plugins/steps/jquery.steps.min.js"></script>
+<script src="<?php echo base_url ?>assets/template/js/plugins/validate/jquery.validate.min.js"></script>
+
 </body>
 </html>
