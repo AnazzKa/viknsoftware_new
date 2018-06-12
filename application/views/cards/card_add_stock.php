@@ -16,15 +16,15 @@
                         <div class="row">
                             <h3 class="m-t-none m-b"></h3>
                             <div class="form-group">
-                                <label>Customer</label>
-                                <select name="customer_id" class="form-control">
-                                    <option>Please Select Customer</option>
+                                <label>Supplier</label>
+                                <select name="supplier_id" class="form-control">
+                                    <option>Please Select Supplier</option>
                                     <?php
                                     $count = 0;
                                     foreach ($all_accounts as $value) {
                                         $count++;
-                                        $rowid = $value->account_id;
-                                        $agent_name = $value->user_name;
+                                        $rowid = $value->suppliers_id;
+                                        $agent_name = $value->full_name;
                                         ?>
                                         <option
                                             value="<?php echo $rowid ?>"><?php echo $agent_name; ?></option>

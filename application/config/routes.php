@@ -46,7 +46,9 @@ $route['supplier_cards']='wallet/supplier_cards';
 $route['supplier_wallet_cards']='wallet/supplier_wallet_cards';
 $route['wallet_card_details']='wallet/wallet_card_details';
 $route['wallet_cards_buy']='wallet/wallet_cards_buy';
+
 $route['suppliers']='wallet/suppliers';
+$route['add_suppliers']='wallet/add_suppliers';
 
 $route['ledger_view']='ledger/ledger_view';
 $route['other_accounts']='home/other_accounts';

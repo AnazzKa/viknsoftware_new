@@ -7,6 +7,7 @@ class Wallet extends CI_Controller {
         parent::__construct();
         $this->load->model('Wallet_model');
         $this->load->model('Card_model');
+        $this->load->model('Account_model');
         $this->load->library('session');
         $this->load->library('pagination');
 
@@ -73,14 +74,57 @@ class Wallet extends CI_Controller {
     }
     public function suppliers()
     {
-       $log_p_id=$this->session->userdata('parent_id');
+        $log_user_id= $_SESSION['ID'];
         $data['title']="Vikn Software | Wallet";
-        $data['suppliers']=$this->Wallet_model->get_all_suppliers($log_p_id);
+        $data['suppliers']=$this->Wallet_model->get_all_suppliers($log_user_id);
         $this->load->view('static/head',$data);
         $this->load->view('static/menu');
         $this->load->view('static/header');
         $this->load->view('wallet/suppliers');
         $this->load->view('static/footer');
         $this->load->view('static/script');
+    }
+    public function add_suppliers()
+    {
+        $data['btn'] = "Save";
+$title['title'] = "Vikn Software | Receipts ADD";
+
+    if(isset($_POST['Save']))
+    {
+         
+        $full_name=$_POST['full_name'];
+        $phone_number=$_POST['phone_number'];
+        $address=$_POST['address'];        
+        $date=date('Y-m-d h:m:s');
+        $log_user_id= $_SESSION['ID'];
+     $query = [
+                'account_name' =>$full_name,
+                'account_type' => 8,
+                'date' => date('Y-m-d h:m:s'),
+                'address' => $address,
+                'phone' => $phone_number,
+                'created_user_id' => $log_user_id
+            ];
+           $last_id= $this->Account_model->insert_accounts($query);
+        $query1 = [
+            'full_name' => $full_name,
+            'address' => $address,
+            'phone' => $phone_number,
+            'entry_date' => $date,
+            'entry_user' => $log_user_id,
+            'account_id' => $last_id
+            
+        ];
+      $id=  $this->Wallet_model->insert_supplier($query1);
+        $this->session->set_flashdata("msg", "<p class='alert alert-success'>Supplier Added Sucessfully</p>");
+        header('Location:' . base_url . 'suppliers');
+    }
+
+$this->load->view('static/head', $title);
+$this->load->view('static/menu');
+$this->load->view('static/header');
+$this->load->view('wallet/add_suppliers', $data);
+$this->load->view('static/footer');
+$this->load->view('static/script');
     }
 }

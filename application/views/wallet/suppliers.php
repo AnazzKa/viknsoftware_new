@@ -9,12 +9,11 @@
         $count = 0;
         foreach ($suppliers as $value) {
             $count++;
-            $user_id=$value->user_id
             ?>
             <div class="col-lg-3">
-                <a  href="<?php echo base_url ?>supplier_cards?id=<?php echo $user_id; ?>">
+                <a  href="">
                     <div class="form-group">
-                        <button class="btn btn-primary btn-block m-t"><?php echo $value->user_name ?>  </button>
+                        <button class="btn btn-primary btn-block m-t"><?php echo $value->full_name ?>  </button>
                     </div>
                 </a>
             </div>
@@ -26,7 +25,11 @@
             <div id="index" class="collapse out">
                 <div class="panel panel-default">
 
-
+<a href="<?php echo base_url ?>add_suppliers">
+                <div class="panel-body">
+                    Add Suppliers<i class="fa fa-chevron-right" style="float: right;"></i>
+                </div>
+            </a>
 
                 </div>
             </div>

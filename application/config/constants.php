@@ -30,7 +30,7 @@ defined('FILE_READ_MODE')  OR define('FILE_READ_MODE', 0644);
 defined('FILE_WRITE_MODE') OR define('FILE_WRITE_MODE', 0666);
 defined('DIR_READ_MODE')   OR define('DIR_READ_MODE', 0755);
 defined('DIR_WRITE_MODE')  OR define('DIR_WRITE_MODE', 0755);
-define("base_url","http://localhost/viknsoft_mobile_view/");
+define("base_url","http://localhost:81/viknsoftware_new/");
 //define("base_url","http://viknsoft.com/");
 
 /*

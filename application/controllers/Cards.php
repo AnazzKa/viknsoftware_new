@@ -9,7 +9,9 @@ class Cards extends CI_Controller
         parent::__construct();
         $this->load->model('Agent_model');
         $this->load->model('Card_model');
+        $this->load->model('Wallet_model');
         $this->load->model('Account_model');
+        $this->load->model('Common_model');
         $this->load->library('session');
         $this->load->library('pagination');
 
@@ -339,16 +341,21 @@ if(isset($_POST['save_card'])){
     $objPHPExcel=$objReader->load(FCPATH.'cards/excel/'.$file_name);
     $totalrows=$objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
     $objWorksheet=$objPHPExcel->setActiveSheetIndex(0);
-
+$supplier_id=$_POST['supplier_id'];
     $query = [
-        'customer_id' => $_POST['customer_id'],
+        'customer_id' => $_POST['supplier_id'],
         'card_item_id' => $_POST['card_type'],
         'total_number' => $totalrows-1,
         'narration' => $_POST['Narration'],
         'user_id' => $user_id
     ];
     $lst_id= $this->Card_model->insert_cards_new($query);
+     $qry="SELECT purchase_rate FROM vikn_cards WHERE card_id=(SELECT card_item_id FROM vikn_cards_new WHERE customer_id='$supplier_id' AND user_id='$user_id'  LIMIT 0,1)";
+     $get_pur_rate=$this->Common_model->direct_query($qry);
+     $amt=($totalrows-1)*$get_pur_rate[0]->purchase_rate;
+      $qry2="UPDATE `vikn_accounts` SET `balance`=`balance`+$amt WHERE `account_id`=(SELECT `account_id` FROM `vikn_suppliers` WHERE `suppliers_id`=$supplier_id)";
 
+     $update_supplier=$this->Common_model->update($qry2);
     for($i=2;$i<=$totalrows;$i++)
     {
         $slno= $objWorksheet->getCellByColumnAndRow(0,$i)->getValue();
@@ -356,7 +363,7 @@ if(isset($_POST['save_card'])){
         $password= $objWorksheet->getCellByColumnAndRow(2,$i)->getValue(); //Excel Column 2
         //$Mobile=$objWorksheet->getCellByColumnAndRow(3,$i)->getValue(); //Excel Column 3
         //$Address=$objWorksheet->getCellByColumnAndRow(4,$i)->getValue(); //Excel Column 4
-        $data_user=array('slno'=>$slno, 'user_id'=>$userid ,'password'=>$password,'card_new_id'=>$lst_id);
+        $data_user=array('slno'=>$slno, 'user_id'=>$userid ,'password'=>$password,'card_new_id'=>$lst_id,'created_user_id'=>$user_id);
         $this->Card_model->import_cards($data_user);
 
 
@@ -369,7 +376,7 @@ if(isset($_POST['save_card'])){
 
         $user_id=$this->session->userdata('ID');
         $data['all_type_item'] = $this->Card_model->get_all_card_type();
-        $data['all_accounts'] = $this->Account_model->get_all_customers($user_id);
+        $data['all_accounts'] = $this->Wallet_model->get_all_suppliers($user_id);
         $data['all_cards'] = $this->Card_model->get_all_cards();
         $title['title'] = "Vikn Software | Cards";
         $this->load->view('static/head', $title);
