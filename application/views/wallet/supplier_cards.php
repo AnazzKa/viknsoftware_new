@@ -7,7 +7,7 @@
         </div>
         <?php
         $count = 0;
-        $parent_id=$_REQUEST['id'];
+        //$parent_id=$_REQUEST['id'];
         foreach ($cards_type as $value) {
         $count++;
             $card_id=$value->card_type_id;
@@ -16,7 +16,7 @@
             }
         ?>
         <div class="col-lg-3">
-            <a  href="<?php echo base_url ?>supplier_wallet_cards?id=<?php echo $card_id; ?>&pid=<?php echo $parent_id; ?>">
+            <a  href="<?php echo base_url ?>supplier_wallet_cards?id=<?php echo $card_id; ?>&pid=">
                 <div class="form-group">
                     <button class="btn btn-primary btn-block m-t"><?php echo $value->card_type ?>  </button>
                 </div>

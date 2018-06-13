@@ -13,7 +13,7 @@
         $count++;
         ?>
             <?php
-            $stock=$this->Card_model->get_cards_stock($value->card_id,$this->session->userdata('account_id'));
+            $stock=$this->Card_model->get_cards_stock($value->card_id,$this->session->userdata('ID'));
 
             ?>
         <div class="col-lg-3">

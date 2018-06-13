@@ -11,9 +11,9 @@
             $count++;
             ?>
             <div class="col-lg-3">
-                <a  href="">
+                <a  href="<?php echo base_url; ?>ledger_view?id=<?php echo $value->account_id; ?>">
                     <div class="form-group">
-                        <button class="btn btn-primary btn-block m-t"><?php echo $value->full_name ?>  </button>
+                        <button class="btn btn-primary btn-block m-t"><?php echo $value->user_name ?>  </button>
                     </div>
                 </a>
             </div>

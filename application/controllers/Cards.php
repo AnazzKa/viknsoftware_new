@@ -11,6 +11,8 @@ class Cards extends CI_Controller
         $this->load->model('Card_model');
         $this->load->model('Wallet_model');
         $this->load->model('Account_model');
+        $this->load->model('Purchase_model');
+        $this->load->model('Ledger_model');
         $this->load->model('Common_model');
         $this->load->library('session');
         $this->load->library('pagination');
@@ -341,7 +343,7 @@ if(isset($_POST['save_card'])){
     $objPHPExcel=$objReader->load(FCPATH.'cards/excel/'.$file_name);
     $totalrows=$objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
     $objWorksheet=$objPHPExcel->setActiveSheetIndex(0);
-$supplier_id=$_POST['supplier_id'];
+    $supplier_id=$_POST['supplier_id'];
     $query = [
         'customer_id' => $_POST['supplier_id'],
         'card_item_id' => $_POST['card_type'],
@@ -353,9 +355,41 @@ $supplier_id=$_POST['supplier_id'];
      $qry="SELECT purchase_rate FROM vikn_cards WHERE card_id=(SELECT card_item_id FROM vikn_cards_new WHERE customer_id='$supplier_id' AND user_id='$user_id'  LIMIT 0,1)";
      $get_pur_rate=$this->Common_model->direct_query($qry);
      $amt=($totalrows-1)*$get_pur_rate[0]->purchase_rate;
-      $qry2="UPDATE `vikn_accounts` SET `balance`=`balance`+$amt WHERE `account_id`=(SELECT `account_id` FROM `vikn_suppliers` WHERE `suppliers_id`=$supplier_id)";
+      
+//purchase
+     $rnd=rand(1000,1000000);
+$pur=[
+        'purchase_number' =>  $rnd,
+        'ledger_dr' => $supplier_id,
+        'ledger_cr' => $user_id,
+        'amount' => $amt,
+        'entry_date' => date('Y-m-d h:m:s'),
+        'entry_user' => $user_id
+    ];
+    $pur_id= $this->Purchase_model->insert($pur);
+    //sales
+    // $sal=[
+    //     'sales_number' => rand(1000,1000000),
+    //     'ledger_dr' => $supplier_id,
+    //     'ledger_cr' => $user_id,
+    //     'amount' => $amt,
+    //     'entry_date' => date('Y-m-d h:m:s'),
+    //     'entry_user' => $user_id
+    // ];
+    //transation
+     $querypu = [
+        'fin_year_id' => 1,
+        'ref_id' => 2,
+        'ref_key' => $pur_id,
+        'ledger_dr' => $supplier_id,
+        'ledger_cr' => $user_id,
+        'amount' => $amt,
+        'entry_date' => date('Y-m-d h:m:s'),
+        'entry_user' => $user_id
+    ];
+    
+$purled_id= $this->Ledger_model->insert($querypu);
 
-     $update_supplier=$this->Common_model->update($qry2);
     for($i=2;$i<=$totalrows;$i++)
     {
         $slno= $objWorksheet->getCellByColumnAndRow(0,$i)->getValue();
@@ -363,7 +397,7 @@ $supplier_id=$_POST['supplier_id'];
         $password= $objWorksheet->getCellByColumnAndRow(2,$i)->getValue(); //Excel Column 2
         //$Mobile=$objWorksheet->getCellByColumnAndRow(3,$i)->getValue(); //Excel Column 3
         //$Address=$objWorksheet->getCellByColumnAndRow(4,$i)->getValue(); //Excel Column 4
-        $data_user=array('slno'=>$slno, 'user_id'=>$userid ,'password'=>$password,'card_new_id'=>$lst_id,'created_user_id'=>$user_id);
+        $data_user=array('slno'=>$slno, 'user_id'=>$userid ,'password'=>$password,'card_new_id'=>$lst_id,'created_user_id'=>$user_id,'purchase_user_id'=>$supplier_id,'owen_user_id'=>$user_id);
         $this->Card_model->import_cards($data_user);
 
 
@@ -376,7 +410,7 @@ $supplier_id=$_POST['supplier_id'];
 
         $user_id=$this->session->userdata('ID');
         $data['all_type_item'] = $this->Card_model->get_all_card_type();
-        $data['all_accounts'] = $this->Wallet_model->get_all_suppliers($user_id);
+        $data['all_accounts'] = $this->Account_model->get_all_supplier($user_id);
         $data['all_cards'] = $this->Card_model->get_all_cards();
         $title['title'] = "Vikn Software | Cards";
         $this->load->view('static/head', $title);

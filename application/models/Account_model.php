@@ -54,11 +54,18 @@ class Account_model extends CI_Model
         return $insert_id;
     }
 
-    public function get_all_accounts()
+    public function get_all_accounts($id,$typ)
     {
         $this->db->select('*');
         $this->db->from('vikn_accounts');
         $this->db->join('vikn_account_type', 'vikn_account_type.account_type_id = vikn_accounts.account_type');
+        if($typ!=''){
+        $wh = array('created_user_id' => $id, 'vikn_accounts.account_type'=>$typ);
+        $this->db->where($wh );
+        }else{
+          $this->db->where('created_user_id', $id);  
+        }
+        
         $query = $this->db->get();
         return $query->result();
     }
@@ -100,6 +107,16 @@ class Account_model extends CI_Model
     {
         $user_id = $this->session->userdata('account_id');
         $result = $this->db->get_where('vikn_accounts', array('account_id' => $user_id));
+        return $result->result();
+    }
+    public function get_all_supplier($id)
+    {
+       $result = $this->db->get_where('vikn_users', array('user_type'=>3,'parent_id' => $id));
+        return $result->result();
+    }
+    public function get_one_user($id)
+    {
+       $result = $this->db->get_where('vikn_users', array('account_id' => $id));
         return $result->result();
     }
 }

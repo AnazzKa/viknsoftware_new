@@ -11,51 +11,38 @@
             ?>
             <div class="col-md-3">
                 <div class="ibox float-e-margins">
+                    <form action="" method="post">
                     <div class="ibox-title">
                         <label><?php echo $value->card_name; ?></label>
                        <br>
                         <div class="col-md-6" style="padding-top:6px"><p>Rate of Card </p></div>
-                        <div class="col-md-6"><input id="rate" type="text" value="<?php echo $value->sales_rate ?>" class="form-control"></div>
+                        <div class="col-md-6"><input id="rate" type="text" name="sales_rate" readonly value="<?php echo $value->sales_rate ?>" class="form-control"></div>
                         <p>Number Of Cards</p>
                         <div class="col-md-6">
                             <button type="button" onclick="count_less();" class="btn btn-danger btn-circle pull-left"><i class="glyphicon glyphicon-minus"></i></button>
                             <button type="button" onclick="count_add();" class="btn btn-info btn-circle pull-right"><i class="glyphicon glyphicon-plus"></i></button>
                         </div>
-                        <div class="col-md-6"><input id="count" type="text" value="1" class="form-control"></div>
+                        <div class="col-md-6"><input id="count" onkeyup="count_add();" name="quantity" type="text" value="1" class="form-control"></div>
                         <br>
                         <div style="padding-top: 10px;padding-bottom: 10px;">
                             <div class="col-md-6"> <p>Total Amount</p></div>
-                            <div class="col-md-6"><input id="total" type="text" readonly value="<?php echo $value->sales_rate ?>" class="form-control"></div>
+                            <div class="col-md-6"><input id="total" name="total" type="text" readonly value="<?php echo $value->sales_rate ?>" class="form-control"></div>
                         </div>
                         <br>
                         <div style="padding-top: 10px;padding-bottom: 10px;">
-                        <select class="form-control">
-                            <option value="">Cash</option>
+                        <select class="form-control" name="type_mode">
+                            <option value="cash">Cash</option>
                         </select>
                          </div>
                         <div class="form-group">
-                            <input type="submit" value="Save" class="form-control btn btn-primary">
+                            <input type="submit" value="Save" name="save" class="form-control btn btn-primary">
                         </div>
                     </div>
-
+</form>
                 </div>
             </div>
         <?php } ?>
 
-
-        <div class="col-md-3">
-            <div id="index" class="collapse out">
-                <div class="panel panel-default">
-
-
-                </div>
-            </div>
-            <a data-toggle="collapse" data-target="#index" href="#index">
-                <div class="ibox float-e-margins">
-                    <button type="button" class="btn btn-info btn-circle btn-xl pull-right"><i class="glyphicon glyphicon-plus"></i></button>
-                </div>
-            </a>
-        </div>
 
     </div>
 </div>

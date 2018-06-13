@@ -46,6 +46,7 @@ $route['supplier_cards']='wallet/supplier_cards';
 $route['supplier_wallet_cards']='wallet/supplier_wallet_cards';
 $route['wallet_card_details']='wallet/wallet_card_details';
 $route['wallet_cards_buy']='wallet/wallet_cards_buy';
+$route['wallet_payment']='wallet/wallet_payment';
 
 $route['suppliers']='wallet/suppliers';
 $route['add_suppliers']='wallet/add_suppliers';

@@ -23,8 +23,8 @@
                                     $count = 0;
                                     foreach ($all_accounts as $value) {
                                         $count++;
-                                        $rowid = $value->suppliers_id;
-                                        $agent_name = $value->full_name;
+                                        $rowid = $value->user_id;
+                                        $agent_name = $value->user_name;
                                         ?>
                                         <option
                                             value="<?php echo $rowid ?>"><?php echo $agent_name; ?></option>

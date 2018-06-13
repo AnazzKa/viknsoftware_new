@@ -6,7 +6,7 @@
     <p><B>Dashboard</B></p>
 </div>
             <div class="col-lg-3">
-                <a  href="<?php echo base_url; ?>cash_in_hand">
+                <a  href="<?php echo base_url; ?>ledger_view?id=<?php echo $this->session->userdata("ID") ?>">
                     <div class="form-group">
                         <button class="btn btn-primary btn-block m-t">Cash In Hand </button>
                     </div>
@@ -77,9 +77,9 @@
             </a>
             <?php } ?>
             <?php if ($User_type == 2) { ?>
-            <a href="<?php echo base_url ?>">
+            <a href="<?php echo base_url ?>wallet_payment">
                 <div class="panel-body">
-                    Download Cards<i class="fa fa-chevron-right" style="float: right;"></i>
+                    Wallet Payment<i class="fa fa-chevron-right" style="float: right;"></i>
                 </div>
             </a>
             <?php } ?>

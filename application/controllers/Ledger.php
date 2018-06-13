@@ -10,6 +10,7 @@ class Ledger extends CI_Controller
         $this->load->model('Receipts_model');
         $this->load->model('Account_model');
         $this->load->model('Discount_model');
+        $this->load->model('Transation_model');
         $this->load->library('session');
         $this->load->library('pagination');
     }
@@ -24,25 +25,25 @@ class Ledger extends CI_Controller
         $this->load->view('static/header');
         if(isset($_GET['id']))
         {
-            $id=$_GET['id'];
+            $data['ledger_id']=$id=$_GET['id'];
             $data['account']=$this->Account_model->get_one_accounts($id);
             foreach($data['account'] as $value)
             {
-                $type=$value->account_type;
+                $type=$value->account_id;
             }
             $data['account_type']=$this->Account_model->get_one_account_type($type);
-            if($id==7 || $id==8)
-                $data['entries']=$this->Discount_model->get_all_entries($id);
+            $data['account_user']=$this->Account_model->get_one_user($type);
+             $data['account_user'][0]->user_id;
+            if($id==7 || $id==8){
+                $data['entries']=$this->Transation_model->get_all_entries($data['account_user'][0]->user_id);
+            }
             else
-            $data['entries']=$this->Receipts_model->get_all_entries($id);
-
-
-
+            $data['entries']=$this->Transation_model->get_all_entries($data['account_user'][0]->user_id);
         }
-        if($id==7 || $id==8)
+
             $this->load->view('ledger/discount_ledger_view',$data);
-        else
-            $this->load->view('ledger/ledger_view',$data);
+        
+           // $this->load->view('ledger/ledger_view',$data);
         $this->load->view('static/footer');
         $this->load->view('static/script');
     }

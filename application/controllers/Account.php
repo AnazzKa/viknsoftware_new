@@ -105,14 +105,14 @@ class Account extends CI_Controller {
             ];
             $this->Agent_model->insert_agent_login($query1);
 
-            $query2 = [
-                'account_name' =>'Cash',
-                'account_type' => 7,
-                'date' => date('Y-m-d h:m:s'),
-                'created_user_id' => $this->session->userdata('ID'),
-                'account_link_id'=>$last_id
-            ];
-            $this->Account_model->insert_accounts($query2);
+            // $query2 = [
+            //     'account_name' =>'Cash',
+            //     'account_type' => 7,
+            //     'date' => date('Y-m-d h:m:s'),
+            //     'created_user_id' => $this->session->userdata('ID'),
+            //     'account_link_id'=>$last_id
+            // ];
+            // $this->Account_model->insert_accounts($query2);
 
             $this->session->set_flashdata("msg", "<p class='alert alert-success'>Account  Added Sucessfully</p>");
             header('Location:' . base_url . 'create_account');
@@ -168,7 +168,7 @@ class Account extends CI_Controller {
             header('Location:' . base_url . 'create_account');
         }
         $data['all_type_item'] = $this->Account_model->get_all_account_type();
-        $data['all_item'] = $this->Account_model->get_all_accounts();
+        $data['all_item'] = $this->Account_model->get_all_accounts($this->session->userdata('ID'),'');
         $title['title'] = "Vikn Software | Account Creation";
         $this->load->view('static/head', $title);
         $this->load->view('static/menu');

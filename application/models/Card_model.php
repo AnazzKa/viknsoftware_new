@@ -106,12 +106,12 @@ class Card_model extends CI_Model {
     public function get_cards_stock($item_id,$user_id)
     {
         $count=0;
-        $result = $this->db->get_where('vikn_cards_new', array('card_item_id' => $item_id,'customer_id'=>$user_id));
+        $result = $this->db->get_where('vikn_cards_new', array('card_item_id' => $item_id,'user_id'=>$user_id));
 //        return $result->result();
         foreach($result->result() as $val)
         {
             $cards_new_id= $val->cards_new_id;
-            $log = $this->db->query("SELECT COUNT(*) as 'count' FROM vikn_cards_export WHERE card_new_id='$cards_new_id' AND sale='0'");
+            $log = $this->db->query("SELECT COUNT(*) as 'count' FROM vikn_cards_export WHERE card_new_id='$cards_new_id' AND sale='0' AND owen_user_id=$user_id");
             $data=$log->row();
             $count=$count+$data->count;
         }

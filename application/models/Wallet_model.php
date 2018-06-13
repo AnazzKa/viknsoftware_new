@@ -17,4 +17,9 @@ public function get_all_suppliers($id)
 	$this->db->insert('vikn_suppliers', $qry);
         return true;
 }
+public function insert_wallet_payment($qry)
+{
+	$this->db->insert('vikn_wallet_payment', $qry);
+        return true;
+}
 }
