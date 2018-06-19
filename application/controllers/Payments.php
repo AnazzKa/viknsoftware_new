@@ -9,6 +9,8 @@ class Payments extends CI_Controller {
         $this->load->model('Account_model');
         $this->load->model('Payment_model');
         $this->load->model('Discount_model');
+        $this->load->model('Ledger_model');
+        $this->load->model('Common_model');
         $this->load->library('session');
         $this->load->library('pagination');
     }
@@ -25,6 +27,7 @@ class Payments extends CI_Controller {
             $payment_from=$_POST['payment_from'];
             $amount=$_POST['amount'];
             $discount=$_POST['discount'];
+            $actul_amount=$amount-$discount;
             $Narration=$_POST['Narration'];
             $date=$_POST['date'];
             $query = [
@@ -46,8 +49,22 @@ class Payments extends CI_Controller {
                 'Narration'=>$Narration,
                 'receipts_number'=>$payment_no
             ];
-
             $this->Discount_model->insert($query1);
+//transation
+     $querypu = [
+        'fin_year_id' => 1,
+        'ref_id' => 4,
+        'ref_key' =>  $id,
+        'ledger_dr' => $payment_from,
+        'ledger_cr' => $payment_into,
+        'amount' => $actul_amount,
+        'entry_date' => date('Y-m-d h:m:s'),
+        'entry_user' => $this->session->userdata('ID')
+    ];  
+$purled_id= $this->Ledger_model->insert($querypu);
+$this->Common_model->update("UPDATE `vikn_accounts` SET `balance`=`balance`+".$actul_amount." WHERE `account_id`=".$payment_into."");
+$this->Common_model->update("UPDATE `vikn_accounts` SET `balance`=`balance`-".$actul_amount." WHERE `account_id`=".$payment_from."");
+            
             $this->session->set_flashdata("msg", "<p class='alert alert-success'>Payment Added Sucessfully</p>");
             header('Location:' . base_url . 'payments_add');
         }

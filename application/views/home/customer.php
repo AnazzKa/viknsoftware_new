@@ -30,57 +30,20 @@
     <div class="col-lg-3">
         <div id="index" class="collapse out">
             <div class="panel panel-default">
+<?php if($this->session->userdata('TYPE')==2 && $this->session->userdata('parent_id')!=1){ ?>
+                <a href="<?php echo base_url ?>create_customer">
+                    <div class="panel-body">
+                        Create Customer<i class="fa fa-chevron-right" style="float: right;"></i>
+                    </div>
+                </a>
+                <?php }else{ ?>
                 <a href="<?php echo base_url ?>create_account">
                     <div class="panel-body">
                         Create Account<i class="fa fa-chevron-right" style="float: right;"></i>
                     </div>
                 </a>
-                <?php if ($User_type == 1) { ?>
-                    <a href="<?php echo base_url ?>add_cards_stock">
-                        <div class="panel-body">
-                            Create Cards<i class="fa fa-chevron-right" style="float: right;"></i>
-                        </div>
-                    </a>
-                <?php } ?>
-                <?php if ($User_type == 2) { ?>
-                    <a href="<?php echo base_url ?>">
-                        <div class="panel-body">
-                            Download Cards<i class="fa fa-chevron-right" style="float: right;"></i>
-                        </div>
-                    </a>
-                <?php } ?>
-                <?php if ($User_type == 2) { ?>
-                    <a href="<?php echo base_url ?>purchase_cards_list">
-                        <div class="panel-body">
-                            Items<i class="fa fa-chevron-right" style="float: right;"></i>
-                        </div>
-                    </a>
-                <?php } ?>
-                <a href="<?php echo base_url ?>receipts_add">
-                    <div class="panel-body">
-                        Receipts<i class="fa fa-chevron-right" style="float: right;"></i>
-                    </div>
-                </a>
-                <a href="<?php echo base_url ?>payments_add">
-                    <div class="panel-body">
-                        Payment<i class="fa fa-chevron-right" style="float: right;"></i>
-                    </div>
-                </a>
-                <a href="<?php echo base_url ?>">
-                    <div class="panel-body">
-                        ADD Income<i class="fa fa-chevron-right" style="float: right;"></i>
-                    </div>
-                </a>
-                <a href="<?php echo base_url ?>">
-                    <div class="panel-body">
-                        ADD Expenses<i class="fa fa-chevron-right" style="float: right;"></i>
-                    </div>
-                </a>
-                <a href="<?php echo base_url ?>">
-                    <div class="panel-body">
-                        ADD Advertisement<i class="fa fa-chevron-right" style="float: right;"></i>
-                    </div>
-                </a>
+<?php } ?>
+                
 
             </div>
         </div>

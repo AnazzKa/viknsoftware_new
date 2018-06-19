@@ -47,7 +47,7 @@ class Card_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('vikn_cards');
         $this->db->join('vikn_card_type', 'vikn_card_type.card_type_id = vikn_cards.card_type_id');
-        $this->db->where('vikn_cards.card_type_id',$id);
+        $this->db->where(array('vikn_cards.card_type_id' =>$id));
         $query = $this->db->get();
         return $query->result();
     }
@@ -117,4 +117,11 @@ class Card_model extends CI_Model {
         }
         return $count;
     }
+    public function customer_card_purchase($query,$id)
+    {
+        $this->db->where('export_id', $id);
+        $this->db->update('vikn_cards_export', $query);
+        return true; 
+    }
+    
 }

@@ -35,8 +35,12 @@
                         </div>
                         <br>
                         <div style="padding-top: 10px;padding-bottom: 10px;">
-                        <select class="form-control" name="type_mode">
-                            <option value="cash">Cash</option>
+                            <input type="hidden" name="type_mode" value="Cash" />
+                        <select class="form-control" name="customer_id">
+                            <option value="">select Customer</option>
+                            <?php foreach ($custmoers as $key) { ?>
+                                <option value="<?php echo $key->account_id ?>"><?php echo $key->account_name ?></option>
+                           <?php } ?>
                         </select>
                          </div>
                         <div class="form-group">

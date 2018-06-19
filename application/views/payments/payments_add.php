@@ -32,37 +32,30 @@
                                 <select name="payment_into"  class="form-control">
                                     <option>Please Select Account Type</option>
                                     <?php
-                                    $data['agent']=$this->Account_model->get_single_account(8);
+                                    $data['agent']=$this->Account_model->get_single_user('S');
                                     foreach ($data['agent'] as $value) {
                                         ?>
-                                        <option value="<?php echo $value->account_id ?>"><?php echo $value->account_name ?></option>
+                                        <option value="<?php echo $value->account_id ?>"><?php echo $value->user_name ?></option>
                                     <?php } ?>
                                     <?php
-                                    $data['agent']=$this->Account_model->get_single_account(4);
+                                    $data['agent']=$this->Account_model->get_single_user('F');
                                     foreach ($data['agent'] as $value) {
                                         ?>
-                                        <option value="<?php echo $value->account_id ?>"><?php echo $value->account_name ?></option>
+                                        <option value="<?php echo $value->account_id ?>"><?php echo $value->user_name ?></option>
                                     <?php } ?>
-                                    <?php
-                                    $data['agent']=$this->Account_model->get_single_account(5);
-                                    foreach ($data['agent'] as $value) {
-                                        if($value->account_name!="Discount"){
-                                            ?>
-                                            <option value="<?php echo $value->account_id ?>"><?php echo $value->account_name ?></option>
-                                        <?php } } ?>
+                                    
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Payment From</label>
                                 <select name="payment_from"  class="form-control">
-                                    <option>Please Select Account Type</option>
                                     <?php
-                                    $data['agent']=$this->Account_model->get_single_account(7);
+                                    $data['agent']=$this->Account_model->get_single_user('O');
                                     $count = 0;
                                     foreach ($data['agent'] as $value) {
                                         $count++;
                                         ?>
-                                        <option value="<?php echo $value->account_id ?>"><?php echo $value->account_name ?></option>
+                                        <option value="<?php echo $value->account_id ?>"><?php echo $value->user_name ?></option>
                                     <?php } ?>
                                 </select>
                             </div>

@@ -9,6 +9,7 @@ $route['Dashboard']='home/index';
 $route['Dashboard2']='home/home';
 $route['cash_in_hand']='home/cash_in_hand';
 $route['customer']='home/customer';
+$route['create_customer']='home/create_customer';
 
 $route['create_agent']='agent/create_agent';
 $route['list_agent']='agent/list_agent';
@@ -47,9 +48,12 @@ $route['supplier_wallet_cards']='wallet/supplier_wallet_cards';
 $route['wallet_card_details']='wallet/wallet_card_details';
 $route['wallet_cards_buy']='wallet/wallet_cards_buy';
 $route['wallet_payment']='wallet/wallet_payment';
+$route['wallet_card_sales']='wallet/wallet_card_sales';
+$route['wallet_cards_sales']='wallet/wallet_cards_sales';
 
 $route['suppliers']='wallet/suppliers';
 $route['add_suppliers']='wallet/add_suppliers';
+$route['suppliers_list']='wallet/suppliers_list';
 
 $route['ledger_view']='ledger/ledger_view';
 $route['other_accounts']='home/other_accounts';

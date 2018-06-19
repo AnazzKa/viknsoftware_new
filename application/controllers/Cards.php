@@ -410,7 +410,7 @@ $purled_id= $this->Ledger_model->insert($querypu);
 
         $user_id=$this->session->userdata('ID');
         $data['all_type_item'] = $this->Card_model->get_all_card_type();
-        $data['all_accounts'] = $this->Account_model->get_all_supplier($user_id);
+        $data['all_accounts'] = $this->Account_model->get_all_supplier($user_id,3);
         $data['all_cards'] = $this->Card_model->get_all_cards();
         $title['title'] = "Vikn Software | Cards";
         $this->load->view('static/head', $title);

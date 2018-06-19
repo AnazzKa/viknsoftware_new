@@ -23,7 +23,7 @@
                          </div>
 
             <?php
-            if($User_type==2){
+            if($User_type==2 && $this->session->userdata("parent_id")==1){
                 ?>
                 <div class="col-lg-3">
                     <a  href="<?php echo base_url ?>suppliers">
@@ -33,10 +33,24 @@
 
                     </a>
                 </div>
+                <?php
+            }
+            ?>
+                 <?php
+            if($User_type==2 && $this->session->userdata("parent_id")!=1){
+                ?>
                 <div class="col-lg-3">
-                    <a  href="<?php echo base_url ?>supplier_cards">
+                    <a  href="<?php echo base_url ?>suppliers_list">
                         <div class="form-group">
                             <button class="btn btn-primary btn-block m-t">wallet </button>
+                        </div>
+
+                    </a>
+                </div>
+                <div class="col-lg-3">
+                    <a  href="<?php echo base_url ?>wallet_card_sales">
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block m-t">Sales</button>
                         </div>
 
                     </a>
@@ -44,7 +58,9 @@
             <?php
             }
             ?>
-
+<?php
+            if($User_type==2 && $this->session->userdata("parent_id")==1){
+                ?>
     <div class="col-lg-3">
         <a  href="<?php echo base_url ?>supplier_cards">
             <div class="form-group">
@@ -53,6 +69,9 @@
 
             </a>
             </div>
+         <?php
+            }
+            ?>   
     <div class="col-lg-3">
         <div class="form-group">
             <button class="btn btn-primary btn-block m-t">Offers </button>
@@ -100,17 +119,17 @@
                     Payment<i class="fa fa-chevron-right" style="float: right;"></i>
                 </div>
             </a>
-            <a href="<?php echo base_url ?>">
+            <a href="">
                 <div class="panel-body">
                     ADD Income<i class="fa fa-chevron-right" style="float: right;"></i>
                 </div>
             </a>
-            <a href="<?php echo base_url ?>">
+            <a href="">
                 <div class="panel-body">
                     ADD Expenses<i class="fa fa-chevron-right" style="float: right;"></i>
                 </div>
             </a>
-            <a href="<?php echo base_url ?>">
+            <a href="">
                 <div class="panel-body">
                     ADD Advertisement<i class="fa fa-chevron-right" style="float: right;"></i>
                 </div>

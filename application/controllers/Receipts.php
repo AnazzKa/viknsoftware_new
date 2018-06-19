@@ -9,6 +9,8 @@ class Receipts extends CI_Controller {
         $this->load->model('Account_model');
         $this->load->model('Receipts_model');
         $this->load->model('Discount_model');
+        $this->load->model('Ledger_model');
+        $this->load->model('Common_model');
         $this->load->library('session');
         $this->load->library('pagination');
     }
@@ -26,6 +28,7 @@ $title['title'] = "Vikn Software | Receipts ADD";
         $received_from=$_POST['received_from'];
         $amount=$_POST['amount'];
         $discount=$_POST['discount'];
+        $actul_amount=$amount-$discount;
         $Narration=$_POST['Narration'];
         $date=$_POST['date'];
         $query = [
@@ -47,8 +50,21 @@ $title['title'] = "Vikn Software | Receipts ADD";
             'Narration'=>$Narration,
             'receipts_number'=>$receipt_no
         ];
-
         $this->Discount_model->insert($query1);
+        //transation
+     $querypu = [
+        'fin_year_id' => 1,
+        'ref_id' => 3,
+        'ref_key' =>  $id,
+        'ledger_dr' => $received_from,
+        'ledger_cr' => $received_into,
+        'amount' => $actul_amount,
+        'entry_date' => date('Y-m-d h:m:s'),
+        'entry_user' => $this->session->userdata('ID')
+    ];  
+$purled_id= $this->Ledger_model->insert($querypu);
+$this->Common_model->update("UPDATE `vikn_accounts` SET `balance`=`balance`+".$actul_amount." WHERE `account_id`=".$received_into."");
+$this->Common_model->update("UPDATE `vikn_accounts` SET `balance`=`balance`-".$actul_amount." WHERE `account_id`=".$received_from."");
         $this->session->set_flashdata("msg", "<p class='alert alert-success'>Receipts Added Sucessfully</p>");
         header('Location:' . base_url . 'receipts_add');
     }

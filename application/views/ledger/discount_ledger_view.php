@@ -49,7 +49,7 @@
                                     $other_user=$this->Account_model->get_one_user($value->ledger_cr);
                                 
                                 if($value->ref_id==1)
-                                    $va="Credit Sales";
+                                    $va="Sales";
                                 if($value->ref_id==2)
                                     $va="Credit Purchase";
                                 if($value->ref_id==3)

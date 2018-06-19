@@ -16,7 +16,7 @@
             }
         ?>
         <div class="col-lg-3">
-            <a  href="<?php echo base_url ?>supplier_wallet_cards?id=<?php echo $card_id; ?>&pid=">
+            <a  href="<?php echo base_url ?>supplier_wallet_cards?id=<?php echo $card_id; ?>&uid=<?php echo $user_id; ?>&pid=">
                 <div class="form-group">
                     <button class="btn btn-primary btn-block m-t"><?php echo $value->card_type ?>  </button>
                 </div>

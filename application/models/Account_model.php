@@ -109,9 +109,9 @@ class Account_model extends CI_Model
         $result = $this->db->get_where('vikn_accounts', array('account_id' => $user_id));
         return $result->result();
     }
-    public function get_all_supplier($id)
+    public function get_all_supplier($id,$typ)
     {
-       $result = $this->db->get_where('vikn_users', array('user_type'=>3,'parent_id' => $id));
+       $result = $this->db->get_where('vikn_users', array('user_type'=>$typ,'parent_id' => $id));
         return $result->result();
     }
     public function get_one_user($id)
@@ -119,4 +119,25 @@ class Account_model extends CI_Model
        $result = $this->db->get_where('vikn_users', array('account_id' => $id));
         return $result->result();
     }
+    public function get_supplier_list($parent_id)
+    {
+      $result = $this->db->get_where('vikn_users', array('user_id' => $parent_id));
+        return $result->result();  
+    }
+    public function get_single_user($ty)
+    { 
+        $user_id = $this->session->userdata('ID');
+        $user_type = $this->session->userdata('TYPE');
+        $account_id = $this->session->userdata('account_id');
+          $parent_id = $this->session->userdata('parent_id');
+        if($ty=='F')
+            $result = $this->db->get_where('vikn_users', array('parent_id' => $user_id));
+        else if($ty=='S')
+           $result = $this->db->get_where('vikn_users', array('user_id' => $parent_id));
+           else if($ty=='O')
+            $result = $this->db->get_where('vikn_users', array('user_id' => $user_id));
+
+        return $result->result();
+    }
+    
 }
