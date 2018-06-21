@@ -22,7 +22,9 @@
                              style="width: 100%;height: 185px;">
 
                         <p>Card Name : <?php echo $value->card_name ?></p>
+                        <?php if($this->session->userdata("parent_id")==1){ ?>
                         <p>Purchase Rate : <?php echo $value->purchase_rate ?></p>
+                        <?php } ?>
                         <p>Sales Rate : <?php echo $value->sales_rate ?></p>
                         <p>Details : <?php echo $value->details ?></p>
                         <p>Narration : <?php echo $value->narration ?></p>
@@ -32,35 +34,5 @@
                 </div>
             </div>
         <?php } ?>
-
-
-
-        <div class="col-lg-3">
-            <div id="index" class="collapse out">
-                <div class="panel panel-default">
-
-
-
-                </div>
-            </div>
-            <a data-toggle="collapse" data-target="#index" href="#index">
-                <div class="ibox float-e-margins">
-                    <button type="button" class="btn btn-info btn-circle btn-xl pull-right"><i class="glyphicon glyphicon-plus"></i></button>
-                </div>
-            </a>
-        </div>
-
-
-
-
-
-
-
     </div>
-
-
-
-
 </div>
-
-

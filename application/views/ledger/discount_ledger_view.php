@@ -79,18 +79,7 @@
                             <?php } ?>
 
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>Date</th>
-                                <th>Particular</th>
-                                <th>VCH Type</th>
-                                <th>VCH No</th>
-                                <th>Reff No</th>
-                                <th>Debit</th>
-                                <th>Credit</th>
-                                <th>Running Balance</th>
-                            </tr>
-                            </tfoot>
+                           
                         </table>
                     </div>
 

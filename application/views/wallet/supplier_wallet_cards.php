@@ -43,35 +43,5 @@
         </div>
     </div>
     <?php   } ?>
-
-
-
-    <div class="col-lg-3">
-        <div id="index" class="collapse out">
-            <div class="panel panel-default">
-
-
-
-            </div>
-        </div>
-        <a data-toggle="collapse" data-target="#index" href="#index">
-            <div class="ibox float-e-margins">
-                <button type="button" class="btn btn-info btn-circle btn-xl pull-right"><i class="glyphicon glyphicon-plus"></i></button>
-            </div>
-        </a>
-    </div>
-
-
-
-
-
-
-
 </div>
-
-
-
-
 </div>
-
-

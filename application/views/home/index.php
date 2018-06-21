@@ -1,4 +1,5 @@
 <?php $User_type = $this->session->userdata("TYPE"); ?>
+<?php $parent_id = $this->session->userdata("parent_id"); ?>
     <div class="wrapper wrapper-content">
         <div class="row">
 
@@ -83,12 +84,12 @@
     <div class="col-lg-3">
     <div id="index" class="collapse out">
         <div class="panel panel-default">
+             <?php if ($parent_id==1 && ($User_type ==2 || $User_type ==1)) { ?>
             <a href="<?php echo base_url ?>create_account">
                 <div class="panel-body">
                     Create Account<i class="fa fa-chevron-right" style="float: right;"></i>
                 </div>
             </a>
-            <?php if ($User_type == 1 || $User_type ==2) { ?>
             <a href="<?php echo base_url ?>add_cards_stock">
                 <div class="panel-body">
                     Create Cards<i class="fa fa-chevron-right" style="float: right;"></i>
@@ -103,7 +104,7 @@
             </a>
             <?php } ?>
             <?php if ($User_type == 2) { ?>
-            <a href="<?php echo base_url ?>purchase_cards_list">
+            <a href="<?php echo base_url ?>supplier_cards">
                 <div class="panel-body">
                     Items<i class="fa fa-chevron-right" style="float: right;"></i>
                 </div>
@@ -143,18 +144,5 @@
                 </div>
                     </a>
             </div>
-
-
-
-
-
-
-
         </div>
-
-
-
-
     </div>
-
-

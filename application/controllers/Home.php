@@ -39,7 +39,6 @@ class Home extends CI_Controller {
     public function other_accounts()
     {
         $data['account_type'] = $this->Account_model->get_all_account_type();
-
         $data['title']="Vikn Software | Dashboard2";
         $this->load->view('static/head',$data);
         $this->load->view('static/menu');

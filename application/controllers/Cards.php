@@ -338,9 +338,15 @@ if(isset($_POST['save_card'])){
     $upload_data = $this->upload->data();
     $file_name = $upload_data['file_name'];
     $extension=$upload_data['file_ext'];
-    $objReader= PHPExcel_IOFactory::createReader('Excel2007');
-    $objReader->setReadDataOnly(true);
-    $objPHPExcel=$objReader->load(FCPATH.'cards/excel/'.$file_name);
+$inputFileName=FCPATH.'cards/excel/'.$file_name;
+ try {
+                $inputFileType =PHPExcel_IOFactory::identify($inputFileName);
+                $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+                $objPHPExcel = $objReader->load($inputFileName);
+            } catch (Exception $e) {
+                die('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME)
+                        . '": ' . $e->getMessage());
+            } 
     $totalrows=$objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
     $objWorksheet=$objPHPExcel->setActiveSheetIndex(0);
     $supplier_id=$_POST['supplier_id'];

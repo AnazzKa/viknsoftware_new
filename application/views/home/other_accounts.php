@@ -5,40 +5,46 @@
         <div class="col-md-12">
             <p><B>Dashboard</B></p>
         </div>
-        <?php
-        foreach ($account_type as $value) {
-        $account_type=$value->account_type;
-        $account_type_id=$value->account_type_id;
-        ?>
+
         <div class="col-lg-3">
-            <a data-toggle="collapse" data-target="#<?php echo $account_type_id; ?>" href="#<?php echo $account_type_id; ?>">
+            <a href="#">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <span class="label label-success pull-right">
                             <i class="fa fa-money fa-2x" aria-hidden="true"></i>
                         </span>
-                        <h5><?php echo $account_type; ?></h5>
+                        <h5>Reports</h5>
+                    </div>
+                </div>
+            </a>
+            
+        </div> 
+        <div class="col-lg-3">
+            <a href="#">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-success pull-right">
+                            <i class="fa fa-money fa-2x" aria-hidden="true"></i>
+                        </span>
+                        <h5>Customer Rate Change</h5>
+                    </div>
                     </div>
             </a>
-            <div id="<?php echo $account_type_id; ?>" class="collapse out">
-                <div class="panel panel-default">
-                    <?php
-                    $account['account']=$this->Account_model->get_single_account($account_type_id);
-                    foreach ($account['account'] as $val) {
-                        ?>
-                        <div class="panel-body">
-                            <a href="<?php echo base_url; ?>ledger_view?id=<?php echo $val->account_id; ?>"> <?php echo $val->account_name; ?><i class="fa fa-chevron-right" style="float: right;"></i></a>
-                        </div>
-                    <?php } ?>
-                </div>
-            </div>
+            
         </div>
-    </div>
-    <?php } ?>
-
-
-
-
+         <div class="col-lg-3">
+            <a href="#">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-success pull-right">
+                            <i class="fa fa-money fa-2x" aria-hidden="true"></i>
+                        </span>
+                        <h5>Logout</h5>
+                    </div>
+                    </div>
+            </a>
+            
+        </div>
 
 
 <div class="col-lg-3">
