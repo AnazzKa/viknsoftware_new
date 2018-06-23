@@ -7,6 +7,7 @@ class Home extends CI_Controller {
          $this->load->model('Login_model');
          $this->load->model('Account_model');
          $this->load->model('Agent_model');
+         $this->load->model('Common_model');
         $this->load->library('session');
         $this->load->library('pagination');
 

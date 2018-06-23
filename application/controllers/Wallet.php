@@ -99,10 +99,10 @@ $qry=[
     'owen_user_id' => $this->session->userdata('ID')
 ];
 $this->Card_model->customer_card_purchase($qry,$export_id);
-$this->Common_model->update("UPDATE `vikn_accounts` SET `wallet`=`wallet`-".$total." WHERE `account_id`=".$this->session->userdata('account_id'));
 $this->session->set_flashdata("msg", "<p class='alert alert-success'>Cards Purchased</p>");
              header('Location:' . base_url . 'wallet_cards_buy?id='.$id.'&uid='.$uid.''); 
 }
+$this->Common_model->update("UPDATE `vikn_accounts` SET `wallet`=`wallet`-".$total." WHERE `account_id`=".$this->session->userdata('account_id'));
 
 
 }else{
@@ -263,7 +263,7 @@ $qry=[
     'owen_user_id' => $customer_id
 ];
 $this->Card_model->customer_card_purchase($qry,$export_id);
-$this->Common_model->update("UPDATE `vikn_accounts` SET `wallet`=`balance`+".$total." WHERE `account_id`=".$this->session->userdata('account_id'));
+$this->Common_model->update("UPDATE `vikn_accounts` SET `balance`=`balance`+".$total." WHERE `account_id`=".$this->session->userdata('account_id'));
  //transation
      $querypu = [
         'fin_year_id' => 1,

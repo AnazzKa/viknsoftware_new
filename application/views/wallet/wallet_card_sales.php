@@ -12,6 +12,7 @@
         $count++;
         $cards=$data['owner_cards']=$this->Common_model->direct_query("SELECT * FROM vikn_cards_new n INNER JOIN vikn_cards c ON c.card_id=n.card_item_id WHERE n.cards_new_id=$card_new_id");
             $stock=$this->Common_model->direct_query("SELECT COUNT(*)AS 'count' FROM `vikn_cards_export` WHERE `card_new_id`=$card_new_id AND `sale`=0 AND `owen_user_id`=$ID");
+            if($stock[0]->count>0){
             ?>
         <div class="col-lg-3">
                 <div class="ibox float-e-margins">
@@ -34,6 +35,6 @@
                     </div>
         </div>
     </div>
-    <?php   } ?>
+    <?php  } } ?>
 </div>
 </div>

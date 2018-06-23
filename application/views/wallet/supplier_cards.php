@@ -21,5 +21,25 @@
             </a>
     </div>
     <?php } ?>
+<?php if($this->session->userdata("parent_id")==1){ ?>
+    <div class="col-lg-3">
+            <div id="index" class="collapse out">
+                <div class="panel panel-default">
+
+<a href="<?php echo base_url ?>add_cards_stock">
+                <div class="panel-body">
+                    Add Cards<i class="fa fa-chevron-right" style="float: right;"></i>
+                </div>
+            </a>
+
+                </div>
+            </div>
+            <a data-toggle="collapse" data-target="#index" href="#index">
+                <div class="ibox float-e-margins">
+                    <button type="button" class="btn btn-info btn-circle btn-xl pull-right"><i class="glyphicon glyphicon-plus"></i></button>
+                </div>
+            </a>
+        </div>
+<?php } ?>
 </div>
 </div>

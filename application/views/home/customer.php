@@ -13,10 +13,14 @@
             <div class="col-md-3">
                 <a  href="<?php echo base_url; ?>ledger_view?id=<?php echo $value->account_id; ?>">
                     <div class="form-group">
-                        <button class="btn btn-primary btn-block m-t"><?php echo $value->account_name; ?>  </button>
+                        <button class="btn btn-primary btn-block m-t"><?php echo $value->account_name; ?> 
+                        <br> <label><?php echo "Cash :". $value->balance; ?></label> 
+                         <?php if($this->session->userdata("parent_id")==1){ ?>
+                         <br><label><?php echo "Wallet :". $value->wallet; ?></label>
+                         <?php } ?>
+                        </button>                        
                     </div>
                 </a>
-
 
             </div>
         <?php } ?>

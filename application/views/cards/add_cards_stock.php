@@ -52,6 +52,7 @@
                                     <?php } ?>
                                 </select>
                             </div>
+                           
                             <div class="form-group">
                                 <label>Import Card</label>
                                 <input type="file" name="import_card" placeholder="Purchase Rate" class="form-control">

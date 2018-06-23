@@ -96,7 +96,7 @@
                 </div>
             </a>
             <?php } ?>
-            <?php if ($User_type == 2) { ?>
+            <?php if ($User_type == 2 && $parent_id==1) { ?>
             <a href="<?php echo base_url ?>wallet_payment">
                 <div class="panel-body">
                     Wallet Payment<i class="fa fa-chevron-right" style="float: right;"></i>
