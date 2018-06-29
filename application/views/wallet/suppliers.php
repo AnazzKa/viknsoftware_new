@@ -8,12 +8,16 @@
         <?php
         $count = 0;
         foreach ($suppliers as $value) {
+                $dr=$this->Common_model->direct_query("SELECT COALESCE(SUM(`amount`),0) AS 'dr' FROM `vikn_transation` WHERE `ledger_dr`=".$value->account_id);
+                $cr=$this->Common_model->direct_query("SELECT COALESCE(SUM(`amount`),0) AS 'cr' FROM `vikn_transation` WHERE `ledger_cr`=".$value->account_id);
             $count++;
             ?>
             <div class="col-lg-3">
                 <a  href="<?php echo base_url; ?>ledger_view?id=<?php echo $value->account_id; ?>">
                     <div class="form-group">
-                        <button class="btn btn-primary btn-block m-t"><?php echo $value->user_name ?>  </button>
+                        <button class="btn btn-primary btn-block m-t"><?php echo $value->user_name ?>
+                              <br><label><?php echo "Cash "; echo $cr[0]->cr-$dr[0]->dr; ?></label>
+                        </button>
                     </div>
                 </a>
             </div>

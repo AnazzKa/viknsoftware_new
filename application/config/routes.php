@@ -59,4 +59,8 @@ $route['ledger_view']='ledger/ledger_view';
 $route['other_accounts']='home/other_accounts';
 
 
+$route['stock_card']='stock/stock_card';
+$route['stock_wallet_cards']='stock/stock_wallet_cards';
+
+
 

@@ -123,5 +123,8 @@ class Card_model extends CI_Model {
         $this->db->update('vikn_cards_export', $query);
         return true; 
     }
-    
+    public function get_all_stock_card_type($id)
+    {
+        
+    }
 }

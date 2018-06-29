@@ -12,7 +12,6 @@
                         <h5>Agent</h5>
                     </div>
             </a>
-
             <div id="agent" class="collapse out">
                 <div class="panel panel-default">
                     <a href="<?php echo base_url ?>create_agent">
