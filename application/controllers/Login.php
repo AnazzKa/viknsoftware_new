@@ -4,7 +4,7 @@ ob_start();
 class Login extends CI_Controller {
     function __construct() {
         parent::__construct();
-         $this->load->model('Login_model');
+        $this->load->model('Login_model');
         $this->load->library('session');
         $this->load->library('pagination');
 
